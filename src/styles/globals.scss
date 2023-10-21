@@ -37,6 +37,60 @@ a {
   font-weight: bold;
 }
 
+input, textarea {
+  color: $charcoal;
+  transition: all 200ms ease-in-out;
+  outline: none !important;
+  border: 0.1em solid transparent;
+
+  &:active, &:hover {
+    border: 0.1em solid $primaryColor;
+  }
+}
+
 .background-alt {
   background: $altBackgroundColor;
+}
+
+.modal-container {
+  &.opened {
+    .modal-overlay {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  .modal-overlay {
+    pointer-events: none;
+    transition: opacity 350ms;
+    opacity: 0;
+    z-index: 99;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #0000008f;
+  }
+
+  .modal-content {
+    transition: opacity 350ms ease-in-out;
+    opacity: 0;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25%;
+    margin: auto;
+    width: 60%;
+    max-width: 40em;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+  }
 }

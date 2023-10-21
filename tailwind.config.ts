@@ -13,6 +13,8 @@ const config: Config = {
       success: '#50FA7B',
       warning: '#F1FA8C',
       danger: '#FF5555',
+      foreground: '#F8F8F2',
+      charcoal: '#4E4E4E',
     },
   },
   plugins: [],

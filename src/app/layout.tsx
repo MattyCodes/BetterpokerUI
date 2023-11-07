@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.scss'
-import { EXTERNAL_LINKS } from '@/constants/index.ts'
+import ApplicationWrapper from '@/components/ApplicationWrapper'
 
 export const metadata: Metadata = {
   title: 'Betterpoker',
@@ -12,17 +12,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
-      <body>
+      <ApplicationWrapper>
         { children }
-
-        <footer>
-          <span>
-            Color Scheme: <a href={ EXTERNAL_LINKS.DRACULA } target="_blank">Dracula</a>
-          </span>
-        </footer>
-      </body>
+      </ApplicationWrapper>
     </html>
   )
 }

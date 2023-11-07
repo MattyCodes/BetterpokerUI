@@ -8,8 +8,11 @@ const config: Config = {
   theme: {
     colors: {
       primary: '#BD93F9',
+      primaryAlt: '#A982E0',
       secondary: '#FFB86C',
+      secondaryAlt: '#E3A25D',
       tertiary: '#FF79C6',
+      tertiaryAlt: '#D966A7',
       success: '#50FA7B',
       warning: '#F1FA8C',
       danger: '#FF5555',

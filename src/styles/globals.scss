@@ -43,7 +43,7 @@ input, textarea {
   outline: none !important;
   border: 0.1em solid transparent;
 
-  &:active, &:hover {
+  &:active, &:hover, &:focus, {
     border: 0.1em solid $primaryColor;
   }
 }
@@ -61,6 +61,7 @@ input, textarea {
 
     .modal-content {
       opacity: 1;
+      top: 25%;
       pointer-events: all;
     }
   }
@@ -79,13 +80,13 @@ input, textarea {
   }
 
   .modal-content {
-    transition: opacity 350ms ease-in-out;
+    transition: opacity 350ms ease, top 350ms ease;
     opacity: 0;
     z-index: 100;
     position: absolute;
     left: 0;
     right: 0;
-    top: 25%;
+    top: 50%;
     margin: auto;
     width: 60%;
     max-width: 40em;

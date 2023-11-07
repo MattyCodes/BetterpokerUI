@@ -6,6 +6,33 @@ import { useState } from 'react';
 
 export default function WelcomePageContent() {
   const [modalOpened, setModalOpened] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [roomName, setRoomName] = useState('');
+
+  function closeModal() {
+    setModalOpened(false);
+    setFormSubmitted(false);
+    setRoomName('');
+  }
+
+  function submitForm() {
+    const chosenRoomName = roomName;
+
+    setFormSubmitted(true);
+
+    if (!!chosenRoomName && chosenRoomName.length > 0) {
+      closeModal();
+
+      // TODO: Handle loading stuff and mutation stuff.
+      alert(chosenRoomName);
+    }
+  }
+
+  function showInputError() {
+    if (!formSubmitted) return false;
+
+    return (!roomName || roomName.length === 0);
+  }
 
   return (
     <div className="w-full">
@@ -20,14 +47,14 @@ export default function WelcomePageContent() {
         </p>
 
         <button
-          className="transform block bg-primary font-semibold rounded w-8/12 mx-auto mt-6 p-3.5 transition duration-500 hover:bg-secondary"
+          className="transform block bg-primary font-semibold rounded w-8/12 mx-auto mt-6 p-3.5 transition duration-500 hover:bg-primaryAlt"
           onClick={ () => setModalOpened(true) }
         >
           Start Room
         </button>
       </Card>
 
-      <Modal opened={ modalOpened }>
+      <Modal opened={ modalOpened } close={ () => closeModal() }>
         <Modal.Title>
           Name Your Room!
         </Modal.Title>
@@ -40,22 +67,31 @@ export default function WelcomePageContent() {
           <input
             type="text"
             id="roomName"
-            className="max-w-md rounded p-3 text-black"
+            className={ 'max-w-md rounded p-3' + (showInputError() ? ' border-danger hover:border-danger' : '') }
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
             placeholder="The Chamber of Secrets"
+            value={ roomName }
+            onInput={ (e) => setRoomName(e.target.value) }
             required
           />
         </Modal.Body>
 
         <Modal.Actions>
           <button
-            className="py-2 px-5 text-sm transform block bg-primary font-semibold rounded transition duration-500 hover:bg-secondary"
-            onClick={ () => setModalOpened(true) }
+            className="py-2 mr-3 px-5 text-sm transform block bg-primary font-semibold rounded transition duration-500 hover:bg-primaryAlt"
+            onClick={ () => submitForm() }
           >
             Let's Go
+          </button>
+
+          <button
+            className="py-2 px-5 text-sm transform block bg-secondary font-semibold rounded transition duration-500 hover:bg-secondaryAlt"
+            onClick={ () => closeModal() }
+          >
+            Cancel
           </button>
         </Modal.Actions>
       </Modal>

@@ -35,10 +35,11 @@ export function ModalBody(props) {
 
 export function Modal(props) {
   const modalClass = props.opened ? 'modal-container opened' : 'modal-container';
+  const closeModal = props.close;
 
   return (
     <div className={ mergeDefaultClassWithProps(modalClass, props) }>
-      <div className="modal-overlay"></div>
+      <div className="modal-overlay" onClick={ () => closeModal() }></div>
 
       <Card className="modal-content">
         { props.children }

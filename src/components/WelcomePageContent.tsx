@@ -70,7 +70,6 @@ export default function WelcomePageContent() {
             className={ 'max-w-md rounded p-3' + (showInputError() ? ' border-danger hover:border-danger' : '') }
             autoComplete="off"
             autoCorrect="off"
-            autoCapitalize="off"
             spellCheck="false"
             placeholder="The Chamber of Secrets"
             value={ roomName }
